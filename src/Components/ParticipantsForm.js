@@ -1,4 +1,5 @@
 import React from 'react'
+import { DropdownForm, StyledSelect, StyledOption } from './styles'
 
 const ParticipantsForm = ({setParticipants, setType, setPrice}) => {
     function onChange(event) {
@@ -8,20 +9,18 @@ const ParticipantsForm = ({setParticipants, setType, setPrice}) => {
     }
     
     return (
-        <>
-            <div>
-                <select onChange={onChange}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                </select>
-            </div>
-        </>
+        <DropdownForm>
+            <StyledSelect onChange={onChange}>
+                <StyledOption value="1">1</StyledOption>
+                <StyledOption value="2">2</StyledOption>
+                <StyledOption value="3">3</StyledOption>
+                <StyledOption value="4">4</StyledOption>
+                <StyledOption value="5">5</StyledOption>
+                <StyledOption value="6">6</StyledOption>
+                <StyledOption value="7">7</StyledOption>
+                <StyledOption value="8">8</StyledOption>
+            </StyledSelect>
+        </DropdownForm>
     )
 }
 

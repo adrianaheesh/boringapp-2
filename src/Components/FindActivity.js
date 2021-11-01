@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import TypeForm from './TypeForm'
 import ParticipantsForm from './ParticipantsForm'
 import PriceForm from './PriceForm'
+import { Button, Header, RadioForm, StyledResults, StyledForm, Paragraph, Container } from './styles'
 
 // this is the page where a user will select how they would like to search for an acitivty
 // options: by type, by participants or by price
@@ -80,28 +81,36 @@ const FindActivity = () => {
 
 // assign my component to a variable, then do {variable} in render
     return (
-        <>
-            <h1>Activity Search</h1>
-                <h3>Search by:</h3>
-                <div onChange={onFormChange}>
+        <Container>
+            <Header>Activity Search</Header>
+                <Paragraph>Search by:</Paragraph>
+                <RadioForm onChange={onFormChange}>
                     <input type="radio" value="Type" name="searchBy" /> Type
                     <input type="radio" value="Participants" name="searchBy" /> Participants
                     <input type="radio" value="Price" name="searchBy" /> Price
                     <input type="radio" value="RandomSearch" name="searchBy" /> Pick for me!
-                </div>
+                </RadioForm>
 
-            {searchBy &&
-            <div>
-                {renderForm(searchBy)}
-                <button onClick={getResult}>Release me from boredom prison</button>
-                <div>
-                    {result.activity}<br/>
-                    {result.participants}<br/>
-                    {changePriceToDollars(result.price)}<br/>
-                </div>
-            </div>
-            }
-        </>
+                {searchBy &&
+                    <>
+                        {renderForm(searchBy)}
+                        <Button onClick={getResult}>Release me from boredom prison</Button>
+                    </>
+                }
+
+                {result.activity &&
+                    <StyledForm>
+                        <StyledResults>
+                            <Paragraph>
+                                You're gonna: {result.activity.charAt(0).toLowerCase() + result.activity.slice(1)}. 
+                                
+                                You'll need: {(result.participants < 2) ? " you, yourself and you" : result.participants + " friends"}.
+                            </Paragraph>
+                            <Paragraph><strong>Price range:</strong> {changePriceToDollars(result.price)}</Paragraph>
+                        </StyledResults>
+                    </StyledForm>
+                }
+        </Container>
     )
 }
 

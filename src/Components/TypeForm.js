@@ -1,4 +1,5 @@
 import React from 'react'
+import { DropdownForm, StyledSelect, StyledOption } from './styles'
 
 const TypeForm = ({setType, setParticipants, setPrice}) => {
     function onChange(event) {
@@ -8,18 +9,18 @@ const TypeForm = ({setType, setParticipants, setPrice}) => {
     }
 
     return (
-        <div>
-            <select onChange={onChange}>
-                <option value="education">Education</option>
-                <option value="recreational">Recreational</option>
-                <option value="social">Social</option>
-                <option value="charity">Charity</option>
-                <option value="cooking">Cooking</option>
-                <option value="relaxation">Relaxation</option>
-                <option value="music">Music</option>
-                <option value="busywork">Busywork</option>
-            </select>
-        </div>
+        <DropdownForm>
+            <StyledSelect onChange={onChange}>
+                <StyledOption value="education">Education</StyledOption>
+                <StyledOption value="recreational">Recreational</StyledOption>
+                <StyledOption value="social">Social</StyledOption>
+                <StyledOption value="charity">Charity</StyledOption>
+                <StyledOption value="cooking">Cooking</StyledOption>
+                <StyledOption value="relaxation">Relaxation</StyledOption>
+                <StyledOption value="music">Music</StyledOption>
+                <StyledOption value="busywork">Busywork</StyledOption>
+            </StyledSelect>
+        </DropdownForm>
     )
 }
 
